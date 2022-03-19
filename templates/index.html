@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <title>Home</title>
+</head>
+
+<body>
+<form action="{{ url_for('handle_data') }}" method="post">
+  <h1 style="color: blue">Testing</h1>
+  <select name="teams" id="teams">
+    <option value="33">Manchester United</option>
+    <option value="23">test2</option>
+    <option value="22">test3</option>
+    <option value="21">test4</option>
+  </select>
+  <input type="submit">
+</form>
+
+
+
+<script type="text/javascript">
+ /* if(document.getElementById("status") != null){
+    var idPost=document.getElementById("status").innerHTML;
+}
+  $.ajax({
+    type: 'POST',
+    url: "{{ url_for('handle_data') }}",
+    data: JSON.stringify("HELLO"),
+    contentType: 'application/json',
+    success: function(data){
+     // alert("HELLO");
+    }
+  });
+  */
+  </script> 
+  
+
+
+</body>
+
+</html>
+
+
