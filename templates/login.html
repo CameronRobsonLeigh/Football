@@ -13,27 +13,32 @@
 
       <div class="login-page">
         <div class="form">
-          <form class="register-form">
+          <form class="register-form" action="{{ url_for('register') }}" method="post">
            
-            <input type="text" placeholder="name"/>
-            <input type="password" placeholder="password"/>
-            <input type="text" placeholder="email address"/>
-            <button>create</button>
+            <input type="text" placeholder="name" name="name"/>
+            <input type="password" placeholder="password" name="password"/>
+            <input type="text" placeholder="email address" name="email"/>
+            <button id="registerbutton">create</button>
             <p class="message">Already registered? <a href="#">Sign Yourself In</a></p>
           </form>
-          <form class="login-form">
+          <form class="login-form" action="{{ url_for('userlogin') }}" method="post">
             <h2 class="headers">Football App </h2>
-            <input type="text" placeholder="username"/>
-            <input type="password" placeholder="password"/>
+            <input type="text" placeholder="Email" name="email"/>
+            <input type="password" placeholder="password" name="password"/>
             <button>login</button>
+            <label>&nbsp;</label>
+              <label style="color:red;">{{ errorMessage }}</label>
             <p class="message">Not registered? <a href="#">Create an account</a></p>
           </form>
         </div>
       </div>
-
 </html>
 
 <script type="text/javascript">
+$( document ).ready(function() {
+    console.log( "ready!" );
+});
+
 $('.message a').click(function(){
    $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
 });

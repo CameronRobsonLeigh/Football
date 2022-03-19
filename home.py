@@ -7,9 +7,17 @@ from flask import request
 from flask import Flask
 from flask import render_template
 import requests
+import mysql.connector
+from mysql.connector.constants import ClientFlag
 
 # initializes the app (__name__ = the file name)
 app = Flask(__name__)
+
+config = {
+    'user': 'root',
+    'password': 'hello123',
+    'host': '34.89.79.78'
+}
 
 @app.route('/')
 def index():
@@ -36,4 +44,41 @@ def handle_data():
 
     return response.text
 
+@app.route('/register', methods=['POST'])
+def register():
+    name = request.form['name']
+    password = request.form['password']
+    email = request.form['email']
 
+    config['database'] = 'FootballDatabase'  # add new database to config dict
+    con = mysql.connector.connect(**config)
+
+    cursor = con.cursor()
+
+    cursor.execute("INSERT INTO Users (userID, name, password, email) VALUES (1, %s, %s, %s)", (name, password, email))
+    con.commit()  # and commit changes
+
+    cursor.execute("SELECT * FROM Users")
+    out = cursor.fetchall()
+    for row in out:
+        print(row)
+
+    return email
+
+
+@app.route('/userlogin', methods=['POST'])
+def userlogin():
+    email = request.form['email']
+    password = request.form['password']
+
+    config['database'] = 'FootballDatabase'  # add new database to config dict
+    con = mysql.connector.connect(**config)
+
+    cursor = con.cursor()
+    cursor.execute("SELECT * FROM Users WHERE email = %s AND password = %s", (email, password))
+    out = cursor.fetchall()
+
+    if len(out) == 0:
+        return render_template("login.html", errorMessage = "Invalid Credentials")
+    else:
+        return render_template("index.html")
