@@ -2,18 +2,22 @@
 # username = Cameron789
 # env\Scripts\activate
 # set FLASK_APP=Home
+
 from flask import request
 from flask import Flask
 from flask import render_template
 import requests
+
 # initializes the app (__name__ = the file name)
 app = Flask(__name__)
-
-# defines the index
 
 @app.route('/')
 def index():
     return render_template("index.html")
+
+@app.route('/')
+def login():
+    return render_template("login.html")
 
 @app.route('/handle_data', methods=["POST"])
 def handle_data():

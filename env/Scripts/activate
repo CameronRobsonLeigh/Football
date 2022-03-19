@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\camer\Football_App\env"
+VIRTUAL_ENV="C:\Users\camer\Documents\GitHub\Football\env"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
