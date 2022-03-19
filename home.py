@@ -1,5 +1,4 @@
 # useful bash commands = cls - clear console, deactivate - get out of virtual environment
-# BBCweather6969!
 # username = Cameron789
 # env\Scripts\activate
 # set FLASK_APP=Home
