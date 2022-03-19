@@ -15,7 +15,7 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 
-@app.route('/')
+@app.route('/Login')
 def login():
     return render_template("login.html")
 
@@ -36,7 +36,4 @@ def handle_data():
 
     return response.text
 
-@app.route('/User')
-def User():
-    return "User Page here"
 
