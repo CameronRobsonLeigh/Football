@@ -16,7 +16,7 @@ app = Flask(__name__)
 config = {
     'user': 'root',
     'password': 'hello123',
-    'host': '34.89.79.78'
+    'host': '34.89.109.27'
 }
 
 @app.route('/')
@@ -44,26 +44,56 @@ def handle_data():
 
     return response.text
 
+@app.route('/displayTeams', methods=['GET','POST'])
+def displayTeams():
+    url = "https://api-football-v1.p.rapidapi.com/v3/teams"
+
+    querystring = {"league":"39","season":"2021"}
+
+    headers = {
+        "X-RapidAPI-Host": "api-football-v1.p.rapidapi.com",
+        "X-RapidAPI-Key": "e2f9bcef3dmshedc9edd9a76d470p15b2f2jsnf4de69c73518"
+    }
+
+    response = requests.request("GET", url, headers=headers, params=querystring)
+    responseJSON = response.json()
+
+    return responseJSON
+
+
 @app.route('/register', methods=['POST'])
 def register():
     name = request.form['name']
     password = request.form['password']
     email = request.form['email']
+    teamID = request.form['favouriteTeam']
 
-    config['database'] = 'FootballDatabase'  # add new database to config dict
+    config['database'] = 'footballdb'  # add new database to config dict
     con = mysql.connector.connect(**config)
 
-    cursor = con.cursor()
 
-    cursor.execute("INSERT INTO Users (userID, name, password, email) VALUES (1, %s, %s, %s)", (name, password, email))
+    cursor = con.cursor()
+    cursor.execute("INSERT INTO Users (name, password, email) VALUES (%s, %s, %s)", (name, password, email))
     con.commit()  # and commit changes
 
-    cursor.execute("SELECT * FROM Users")
+    cursor = con.cursor()
+    cursor.execute("SELECT UserId FROM Users WHERE email = %s", ([email]))
     out = cursor.fetchall()
-    for row in out:
-        print(row)
 
-    return email
+
+    grabTeams = ""
+    for row in out:
+         cursor = con.cursor()
+         cursor.execute("INSERT INTO FavouriteTeam (userID, teamID) VALUES (%s, %s)", (row[0], teamID))
+         con.commit()  # and commit changes
+
+         cursor = con.cursor()
+         cursor.execute("SELECT * FROM FavouriteTeam WHERE userId = %s", ([row[0]]))
+         grabTeams = cursor.fetchone()
+
+    id ,user, team = grabTeams
+
+    return "User ID " + str(user) + "Users Favourite team ID " + team
 
 
 @app.route('/userlogin', methods=['POST'])
@@ -71,7 +101,7 @@ def userlogin():
     email = request.form['email']
     password = request.form['password']
 
-    config['database'] = 'FootballDatabase'  # add new database to config dict
+    config['database'] = 'footballdb'  # add new database to config dict
     con = mysql.connector.connect(**config)
 
     cursor = con.cursor()
