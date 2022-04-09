@@ -16,7 +16,8 @@ app = Flask(__name__)
 config = {
     'user': 'root',
     'password': 'hello123',
-    'host': '34.89.109.27'
+    'host': '34.89.109.27',
+    'database': 'footballdb'
 }
 
 @app.route('/')
@@ -26,6 +27,11 @@ def index():
 @app.route('/Login')
 def login():
     return render_template("login.html")
+
+@app.route('/Registration')
+def Registration():
+    return render_template("registration.html")
+
 
 @app.route('/handle_data', methods=["POST"])
 def handle_data():
@@ -63,37 +69,36 @@ def displayTeams():
 
 @app.route('/register', methods=['POST'])
 def register():
-    name = request.form['name']
-    password = request.form['password']
-    email = request.form['email']
-    teamID = request.form['favouriteTeam']
+    # name = request.form['name']
+    # password = request.form['password']
+    # email = request.form['email']
+    # teamID = request.form['favouriteTeam']
+    cnxn = mysql.connector.connect(**config)
 
-    config['database'] = 'footballdb'  # add new database to config dict
-    con = mysql.connector.connect(**config)
+    mycursor = cnxn.cursor()
+    mycursor.execute("DESCRIBE Users")
+    for x in mycursor:
+        print(x)
+    # cursor.execute("INSERT INTO Users (name, password, email) VALUES (%s, %s, %s)", (name, password, email))
+    # con.commit()  # and commit changes
+
+    # cursor = con.cursor()
+    # cursor.execute("SELECT UserId FROM Users WHERE email = %s", ([email]))
+    # out = cursor.fetchall()
 
 
-    cursor = con.cursor()
-    cursor.execute("INSERT INTO Users (name, password, email) VALUES (%s, %s, %s)", (name, password, email))
-    con.commit()  # and commit changes
+    # grabTeams = ""
+    # for row in out:
+    #      cursor = con.cursor()
+    #      cursor.execute("INSERT INTO FavouriteTeam (userID, teamID) VALUES (%s, %s)", (row[0], teamID))
+    #      con.commit()  # and commit changes
 
-    cursor = con.cursor()
-    cursor.execute("SELECT UserId FROM Users WHERE email = %s", ([email]))
-    out = cursor.fetchall()
+    #      cursor = con.cursor()
+    #      cursor.execute("SELECT * FROM FavouriteTeam WHERE userId = %s", ([row[0]]))
+    #      grabTeams = cursor.fetchone()
 
-
-    grabTeams = ""
-    for row in out:
-         cursor = con.cursor()
-         cursor.execute("INSERT INTO FavouriteTeam (userID, teamID) VALUES (%s, %s)", (row[0], teamID))
-         con.commit()  # and commit changes
-
-         cursor = con.cursor()
-         cursor.execute("SELECT * FROM FavouriteTeam WHERE userId = %s", ([row[0]]))
-         grabTeams = cursor.fetchone()
-
-    id ,user, team = grabTeams
-
-    return "User ID " + str(user) + "Users Favourite team ID " + team
+    # id ,user, team = grabTeams
+    return "HELLO"
 
 
 @app.route('/userlogin', methods=['POST'])
