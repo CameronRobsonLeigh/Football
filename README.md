@@ -30,8 +30,10 @@ After logging into their account, users are directed to the user settings page. 
 
 
 The team fixture page pulls current data from the user's favourite football team drop down. For example, if a user selects Manchester United as their favourite team, the team fixtures page will display all the team's current fixtures. The live fixtures page, on the other hand, does not accept any input arguments and merely outputs the fixtures of any team that is playing on that day.  
- 
-  
+
+Reference [Football API](https://www.api-football.com/)
+To create a [Docker container](https://docs.github.com/en/github-ae@latest/actions/creating-actions/creating-a-docker-container-action#creating-a-dockerfile)
+
+Google Kubernetes Engine[GKE](https://cloud.google.com/kubernetes-engine/docs/tutorials/hello-app)
 
 
-Reference [Football API](https://www.api-football.com/).
