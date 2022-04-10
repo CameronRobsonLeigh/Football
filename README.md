@@ -8,9 +8,11 @@ The website allows you to watch live football matches from your favourite Premie
 
 [Working](#Working )
 
-[Running the WebApp](#Backend)
+[Running the WebApp](#Running the WebApp)
 
-*Running Locally
+
+[References](#References)
+
 
  
 
@@ -36,13 +38,16 @@ After logging into their account, users are directed to the user settings page. 
 
 The team fixture page pulls current data from the user's favourite football team drop down. For example, if a user selects Manchester United as their favourite team, the team fixtures page will display all the team's current fixtures. The live fixtures page, on the other hand, does not accept any input arguments and merely outputs the fixtures of any team that is playing on that day.  
 
-##
+## Running the WebApp
 
 
 
 
 
-Reference [Football API](https://www.api-football.com/)
+
+## References 
+
+***Reference [Football API](https://www.api-football.com/)***
 
 To create a [Docker container](https://docs.github.com/en/github-ae@latest/actions/creating-actions/creating-a-docker-container-action#creating-a-dockerfile)
 
