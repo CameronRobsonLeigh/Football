@@ -9,8 +9,7 @@ The website allows you to watch live football matches from your favourite Premie
 [Working](#Working )
 
 
-[RunningtheWebApp](#Running the WebApp)
-
+[Running the WebApp](#Running the WebApp )
 
 [References](#References)
 
@@ -42,16 +41,15 @@ The team fixture page pulls current data from the user's favourite football team
 ## Running the WebApp
 
 > Running Locally
-
-
-
 > Cloud Application
+> 
+
 
 This is how we've set up our load balancing!
 
 * By logging into the cloud console and creating a new project, you may deploy a load-balanced application with Kubernetes.
  
-
+Ubuntu
 ```
 git clone https://github.com/CameronRobsonLeigh/Football.git
 
