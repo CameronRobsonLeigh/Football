@@ -7,7 +7,7 @@ The website allows you to watch live football matches from your favourite Premie
 
 [Working](#Working )
 
-[Guide to run the WebApp](#Guide to run the WebApp)
+[Running](#Runningthe)
 
 [References](#References)
 
