@@ -2,7 +2,8 @@
 The website allows you to watch live football matches from your favourite Premier League clubs.
 
 ##Table of contents
--[About](#About "Goto About")
+
+[About](#About "Goto About")
 
 
 -Architecture
@@ -20,6 +21,8 @@ The website allows you to watch live football matches from your favourite Premie
 
 
 ##About 
+Markup :  # About #
+
 
 
 #Architecture
