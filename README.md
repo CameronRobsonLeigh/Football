@@ -38,9 +38,9 @@ The team fixture page pulls current data from the user's favourite football team
 
 #### Guide
 ## Guide to run WebApp
-> Running the Web Application Locally on:-
-> * Windows
-> * Ubuntu
+> Running the Web Application Locally on :
+> Windows
+> Ubuntu
 
 - Windows
 
