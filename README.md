@@ -3,13 +3,13 @@ The website allows you to watch live football matches from your favourite Premie
 
 ## Table of contents
 
-[About](#About "Goto About")
+* [About](#About "Goto About")
 
-[Working](#Working )
+* [Working](#Working )
 
-[Guide to run WebApp](#Guide "Goto Guide to run the WebApp")
+* [Guide to run WebApp](#Guide)
 
-[References](#References)
+* [References](#References)
 
 
  
@@ -36,6 +36,7 @@ After logging into their account, users are directed to the user settings page. 
 
 The team fixture page pulls current data from the user's favourite football team drop down. For example, if a user selects Manchester United as their favourite team, the team fixtures page will display all the team's current fixtures. The live fixtures page, on the other hand, does not accept any input arguments and merely outputs the fixtures of any team that is playing on that day.  
 
+###### Guide
 ## Guide to run the WebApp
 
 > Running Locally
