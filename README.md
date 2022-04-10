@@ -16,12 +16,10 @@ The website allows you to watch live football matches from your favourite Premie
 
 
 ## Working
-
+ 
 The web app operates as follows: the user is first led to a home page with three pages shown in the navigation bar. A user will register on the Signup page. Multiple forms on the signup page collect information such as a user's name, email address, and password.
 
 This information is transmitted to a MYSQL database stored on Google Cloud once it is submitted. The data base will return a single int that reflects the user's id. On the same page, there is a dropdown menu from which a user can choose their favourite team.
-
-
 This information is also saved in the MYSQL cloud. The user is directed to the login page after completing the registration process. The login page operates as follows: the user's email address and password are entered.
 
 This email and password are then compared to the user and password in the Google Cloud database. The user will be successfully logged in if the user and password in a specific row of the database match the ones entered. A session is started when a user logs in, and it is active for as long as the user is logged in.
