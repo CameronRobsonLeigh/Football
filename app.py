@@ -11,6 +11,7 @@ import requests
 import mysql.connector
 from mysql.connector.constants import ClientFlag
 from flask import session
+import regex
 
 # initializes the app (__name__ = the file name)
 app = Flask(__name__)
@@ -35,14 +36,38 @@ def login():
 def loginNew():
     return render_template("loginnew.html")
 
+@app.route('/logout')
+def logout():
+    session.pop("userid", None)
+    return render_template("loginnew.html")
+
 @app.route('/Registration')
 def Registration():
     return render_template("registration.html")
 
 @app.route('/Settings')
 def UserSettings():
-    print(session['userid'])
-    return render_template("UserSettings.html")
+
+    #, value=animal
+    userid = session['userid'][0]
+    teamid = session['teamid'][0]
+
+    con = mysql.connector.connect(**config)
+    cursor = con.cursor()
+
+    cursor.execute("SELECT Name FROM Users WHERE userid = %s", ([userid]))
+    name = cursor.fetchone()
+
+    cursor.execute("SELECT password FROM Users WHERE userid = %s", ([userid]))
+    password = cursor.fetchone()
+
+    cursor.execute("SELECT email FROM Users WHERE userid = %s", ([userid]))
+    email = cursor.fetchone()
+
+    # password = session['password']
+    # email = session['email']
+    # name = session['name']
+    return render_template("UserSettings.html", userid = userid, name = name[0], email = email[0], password = password[0])
 
 @app.route('/standings')
 def standings():
@@ -67,19 +92,39 @@ def handle_data():
 
 @app.route('/displayTeams', methods=['GET','POST'])
 def displayTeams():
-    url = "https://api-football-v1.p.rapidapi.com/v3/teams"
 
-    querystring = {"league":"39","season":"2021"}
+    teamid = session['teamid'][0]
+    return render_template('fixture.html', value = teamid)
 
-    headers = {
-        "X-RapidAPI-Host": "api-football-v1.p.rapidapi.com",
-        "X-RapidAPI-Key": "e2f9bcef3dmshedc9edd9a76d470p15b2f2jsnf4de69c73518"
-    }
 
-    response = requests.request("GET", url, headers=headers, params=querystring)
-    responseJSON = response.json()
+@app.route('/updateUser', methods=['GET','POST'])
+def updateUser():
+    name = request.form['name']
+    password = request.form['password']
+    email = request.form['email']
 
-    return responseJSON
+    con = mysql.connector.connect(**config)
+    cursor = con.cursor()
+
+    cursor.execute("UPDATE Users SET Name=%s, password=%s, email=%s WHERE UserId=%s", (name, password, email, session['userid'][0]))
+    con.commit()  # and commit changes
+
+    return redirect(url_for('UserSettings'))
+
+@app.route('/deleteUser', methods=['GET','POST'])
+def deleteUser():
+    userid = session['userid'][0]
+    con = mysql.connector.connect(**config)
+    cursor = con.cursor()
+
+    cursor.execute("DELETE FROM Users WHERE UserId=%s", ([userid]))
+    con.commit()  # and commit changes
+
+    cursor.execute("DELETE FROM FavouriteTeam WHERE UserId=%s", ([userid]))
+    con.commit()  # and commit changes
+
+
+    return redirect(url_for('Registration'))
 
 
 @app.route('/register', methods=['POST'])
@@ -96,7 +141,6 @@ def register():
 
     cursor.execute("SELECT UserId FROM Users WHERE email = %s", ([email]))
     out = cursor.fetchall()
-
 
     grabTeams = ""
     for row in out:
@@ -129,19 +173,22 @@ def userlogin():
         cursor.execute("SELECT UserId FROM Users WHERE email = %s", ([email]))
         out = cursor.fetchone()
         userid = out
-
-        # cursor.execute("SELECT * FROM FavouriteTeam")
-        # out2 = cursor.fetchall()
-        # for x in out2:
-        #     print(x)
-        
-
-
-
-        # cursor = con.cursor()
-        # cursor.execute("SELECT teamID FROM FavouriteTeam WHERE userId = %s", (userid))
-        # grabTeam = cursor.fetchone()
+        print(userid)
 
         session['userid'] = userid
-        # session['teamid'] = grabTeam
+
+        cursor.execute("SELECT TeamId FROM FavouriteTeam WHERE UserId = %s", (session['userid']))
+        out2 = cursor.fetchone()
+        teamid = out2
+
+        cursor.execute("SELECT Name FROM Users WHERE UserId = %s", (session['userid']))
+        out3 = cursor.fetchone()
+        name = out3
+
+        session['teamid'] = teamid
+        # session['password'] = password
+        # session['name'] = name
         return redirect(url_for('UserSettings'))
+
+if __name__ == '__main__':
+    app.run(debug = True)
