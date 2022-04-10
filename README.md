@@ -40,6 +40,27 @@ The team fixture page pulls current data from the user's favourite football team
 
 ## Running the WebApp
 
+> Running Locally
+
+
+
+> Cloud Application
+
+This is how we've set up our load balancing!
+
+* By logging into the cloud console and creating a new project, you may deploy a load-balanced application with Kubernetes.
+ 
+
+```
+git clone https://github.com/CameronRobsonLeigh/Football.git
+
+```
+
+cd Football/
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+flask run
 
 
 
@@ -49,8 +70,8 @@ The team fixture page pulls current data from the user's favourite football team
 
 ***Reference [Football API](https://www.api-football.com/)***
 
-To create a [Docker container](https://docs.github.com/en/github-ae@latest/actions/creating-actions/creating-a-docker-container-action#creating-a-dockerfile)
+***To create a [Docker container](https://docs.github.com/en/github-ae@latest/actions/creating-actions/creating-a-docker-container-action#creating-a-dockerfile)***
 
-Google Kubernetes Engine[GKE](https://cloud.google.com/kubernetes-engine/docs/tutorials/hello-app)
+***Google Kubernetes Engine[GKE](https://cloud.google.com/kubernetes-engine/docs/tutorials/hello-app)***
 
 
