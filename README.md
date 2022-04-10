@@ -11,13 +11,7 @@ The website allows you to watch live football matches from your favourite Premie
 
 [Backend](#Architecture )
 
-backkkww
 
-
- _bss
- 
- 
-  _shhh
 
 
 [Frontend](#Architecture )
@@ -42,4 +36,4 @@ backkkww
   
 
 
-https://www.api-football.com/
+Reference [Football API](https://www.api-football.com/).
