@@ -36,19 +36,16 @@ After logging into their account, users are directed to the user settings page. 
 
 The team fixture page pulls current data from the user's favourite football team drop down. For example, if a user selects Manchester United as their favourite team, the team fixtures page will display all the team's current fixtures. The live fixtures page, on the other hand, does not accept any input arguments and merely outputs the fixtures of any team that is playing on that day.  
 
-###### Guide
-## Guide to run the WebApp
+#### Guide
+## Guide to run WebApp
+> Running the Web Application Locally on:-
+> *Windows
+> *Ubuntu
 
-> Running Locally
-> Cloud Application
-> 
+- Windows
 
 
-This is how we've set up our load balancing!
-
-* By logging into the cloud console and creating a new project, you may deploy a load-balanced application with Kubernetes.
- 
-Ubuntu
+* Ubuntu
 ```
 git clone https://github.com/CameronRobsonLeigh/Football.git
 
