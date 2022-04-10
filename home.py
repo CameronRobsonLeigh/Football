@@ -44,6 +44,9 @@ def UserSettings():
     print(session['userid'])
     return render_template("UserSettings.html")
 
+@app.route('/standings')
+def standings():
+    return render_template('live.html')
 
 @app.route('/handle_data', methods=["POST"])
 def handle_data():
