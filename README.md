@@ -6,22 +6,23 @@ The website allows you to watch live football matches from your favourite Premie
 [About](#About "Goto About")
 
 
--Architecture
+[Architecture](#Architecture "Goto Architecture")
 
 
--Backend
+[Backend](#Architecture "Goto Architecture")
+
  _x
   _y
    _z
  
  
-   
--Frontend
+ 
+[Frontend](#Architecture "Goto Architecture")
+
 
 
 
 ##About 
-Markup :  # About #
 
 
 
