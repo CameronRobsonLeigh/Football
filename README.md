@@ -15,7 +15,7 @@ The website allows you to watch live football matches from your favourite Premie
  We designed a web application for this project that takes the user's favourite soccer teams and links them to an external API to get the appropriate fixtures. This web app was created to look and work like soccer apps like the Barclays Premier League app. The football API from the rapid API website was used in this case.
 
 
-# Working
+## Working
 
 The web app operates as follows: the user is first led to a home page with three pages shown in the navigation bar. A user will register on the Signup page. Multiple forms on the signup page collect information such as a user's name, email address, and password.
 
