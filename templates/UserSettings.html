@@ -33,59 +33,38 @@
       <div class="navbar-nav">
         <a class="nav-item nav-link" id="home" href="/">Home</a>
         <a class="nav-item nav-link" id="logout" href="/logout">Logout</a>
-        <a class="nav-item nav-link" id="login" href="/login">Login</a>
-        <a class="nav-item nav-link" id="signUp" href="/signup">Sign Up</a>
-        <a class="nav-item nav-link" id="standing" href = "/standings">Standings</a>
+        <a class="nav-item nav-link" id="displayTeams" href="/displayTeams">Team Fixtures</a>
+        <a class="nav-item nav-link" id="standing" href = "/standings">Live fixtures</a>
       </div>
     </div>
   </nav>
 
 
-<form method="post">
+<form method="post" action="{{ url_for('updateUser') }}">
     <br/>
     <br/>
-    <h3 align = "centre" >Sign Up</h3>
+    <h3 align = "centre" >Your Settings</h3>
     <div class = "form-group" >
         <label for = "email">Email Address</label>
-        <input type = "email" class = "form-control" id = "email" name = "email" placeholder="Enter email">
+        <input type = "email" class = "form-control" id = "email" name = "email" placeholder="Enter email" value={{email}}>
     </div>
     <div class = "form-group">
         <label for = "firstName">First Name</label>
-        <input type = "text" class = "form-control" id = "firstname" name = "name" placeholder="Enter firstname">
+        <input type = "text" class = "form-control" id = "firstname" name = "name" placeholder="Enter firstname" value={{name}}>
     </div>
     <div class = "form-group">
         <label for = "password1">Password</label>
-        <input type = "password" class = "form-control" id = "password" name = "password" placeholder="Enter first password">
-    </div>
-    <select name="favouriteTeam" id="favouriteTeamDd" style="width:100%"> 
-      <option disabled select >Please select an option</option>
-      <option value="33" id="33" >Manchester United</option>
-      <option value="34" id="34" >Newcastle</option>
-      <option value="38" id="38" >Watford</option>
-      <option value="39" id="39" >Wolves</option>
-      <option value="40" id="40" >Liverpool</option>
-      <option value="41" id="41" >Southampton</option>
-      <option value="42" id="42" >Arsenal</option>
-      <option value="44" id="44" >Burnley</option>
-      <option value="45" id="45" >Everton</option>
-      <option value="46" id="46" >Leicester</option>
-      <option value="47" id="47" >Tottenham</option>
-      <option value="48" id="48" >West Ham</option>
-      <option value="49" id="49" >Chelsea</option>
-      <option value="50" id="50" >Manchester City</option>
-      <option value="51" id="51" >Brighton</option>
-      <option value="52" id="52" >Crystal Palace</option>
-      <option value="55" id="55" >Brentford</option>
-      <option value="63" id="63" >Leeds</option>
-      <option value="66" id="66" >Aston Villa</option>
-      <option value="71" id="71" >Norwich</option>
-
-    </select>
+        <input class = "form-control" id = "password" name = "password" placeholder="Enter first password" value={{password}}>
+    </div>  
     <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
     <br/>
-    <button type = "submit" class = "btn btn-primary" id="registerbutton">Submit</button>
+    <button type = "submit" class = "btn btn-primary" id="registerbutton">Update</button>
 </form>
 
+
+<form method="post" action="{{ url_for('deleteUser') }}">
+    <button type = "submit" class = "btn btn-primary" id="registerbutton">Delete</button>
+</form>
 </body>
 
 </html>
