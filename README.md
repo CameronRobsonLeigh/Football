@@ -90,8 +90,6 @@ pip install -r requirements.txt
 flask run
 ```
 
-### FrontEnd
-
 
 
 ### References 
