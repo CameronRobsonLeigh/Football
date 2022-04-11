@@ -42,7 +42,7 @@ The team fixture page pulls current data from the user's favourite football team
 
 ##### Download the source code and extract the contents to run this repository locally, or clone the repository.
 
-- Windows
+#### Windows
 > Visual Studio Code
 
 1. In your VS code terminal, open CMD.
@@ -50,7 +50,7 @@ The team fixture page pulls current data from the user's favourite football team
 2. To activate the environment.
 
 ```.\env\Scripts\activate
-`````
+```
 3. Setting the FLASK_ENV environment variable to 'development' will
   enable debug mode.
   
@@ -60,7 +60,7 @@ set FLASK_ENV=development
 flask run
 ```
 
-* Ubuntu
+##### Ubuntu
 > Terminal
 
 1. To begin, open the cloud shell and clone the repository as follows:
