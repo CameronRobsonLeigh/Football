@@ -48,8 +48,9 @@ The team fixture page pulls current data from the user's favourite football team
 1. In your VS code terminal, open CMD.
 
 2. To activate the environment.
+```
+.\env\Scripts\activate
 
-```.\env\Scripts\activate
 ```
 3. Setting the FLASK_ENV environment variable to 'development' will
   enable debug mode.
