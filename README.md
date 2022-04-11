@@ -36,32 +36,60 @@ After logging into their account, users are directed to the user settings page. 
 
 The team fixture page pulls current data from the user's favourite football team drop down. For example, if a user selects Manchester United as their favourite team, the team fixtures page will display all the team's current fixtures. The live fixtures page, on the other hand, does not accept any input arguments and merely outputs the fixtures of any team that is playing on that day.  
 
-#### Guide
+##### Guide
 ## Guide to run WebApp
-> Running the Web Application Locally on :
-> Windows
-> Ubuntu
+> Running the Web Application Locally on Windows and Ubuntu.
+
+##### Download the source code and extract the contents to run this repository locally, or clone the repository.
 
 - Windows
+> Visual Studio Code
 
+1. In your VS code terminal, open CMD.
+
+2. To activate the environment.
+
+```.\env\Scripts\activate
+`````
+3. Setting the FLASK_ENV environment variable to 'development' will
+  enable debug mode.
+  
+```
+set FLASK_APP=app.py
+set FLASK_ENV=development
+flask run
+```
 
 * Ubuntu
+> Terminal
+
+1. To begin, open the cloud shell and clone the repository as follows:
 ```
 git clone https://github.com/CameronRobsonLeigh/Football.git
 
 ```
-
+2. Enter the repository by typing
+```
 cd Football/
+```
+3. Creating a new Virtual Environment.
+```
 python3 -m venv venv
+```
+4. Activate the enviroment.
+```
 source venv/bin/activate
+```
+5. Installing the dependencies.
+```
 pip install -r requirements.txt
+````
+6. Flask run
+```
 flask run
+```
 
-
-
-
-
-## References 
+### References 
 
 ***Reference [Football API](https://www.api-football.com/)***
 
