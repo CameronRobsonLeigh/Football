@@ -1,5 +1,5 @@
 # FOOTBALL LIVE SCORES⚽
-This website helps you display live fixtures from your favourite football teams in the premier league.
+This website helps you display live fixtures of your favourite football teams in the premier league.
 
 ## Table of contents
 
