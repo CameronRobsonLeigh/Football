@@ -1,5 +1,5 @@
 # FOOTBALL API FIXTURES⚽
-The website allows you to watch live football matches from your favourite Premier League clubs.
+This website helps you display live fixtures from your favourite football teams in the premier league.
 
 ## Table of contents
 
